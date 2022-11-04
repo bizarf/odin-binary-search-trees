@@ -203,8 +203,15 @@ class Tree {
         }
     }
 
+    // function to rebalance the array if it is unbalanced
     rebalance() {
-
+        let updatedArray = this.inorder();
+        if (this.isBalanced() === true) {
+            return;
+        } else {
+            this.root = null;
+            this.root = this.buildTree(updatedArray, 0, updatedArray.length - 1);
+        }
     }
 }
 
@@ -226,7 +233,7 @@ binarySearchTree.insert(50);
 binarySearchTree.insert(25);
 binarySearchTree.insert(30);
 binarySearchTree.delete(50);
-prettyPrint(binarySearchTree.root);
+// prettyPrint(binarySearchTree.root);
 // console.log(binarySearchTree.find(3))
 binarySearchTree.levelOrder()
 console.log(binarySearchTree.inorder())
@@ -236,3 +243,4 @@ console.log(binarySearchTree.height(3))
 console.log(binarySearchTree.depth(6))
 console.log(binarySearchTree.isBalanced())
 binarySearchTree.rebalance()
+prettyPrint(binarySearchTree.root);
