@@ -76,7 +76,7 @@ class Tree {
 
     // searches for a value and returns the node if found
     find(value, root = this.root) {
-        if (root === null) return "Value not found";
+        if (root === null) return null;
 
         if (value === root.data) return root;
 
@@ -88,6 +88,7 @@ class Tree {
         return root;
     }
 
+    // returns a level order array
     levelOrder(callback, root = this.root) {
         if (root === null) return;
 
@@ -112,6 +113,7 @@ class Tree {
         return levelOrderArray;
     }
 
+    // returns an inorder array
     inorder(callback, root = this.root, inorderArray = []) {
         if (root === null) return;
 
@@ -129,6 +131,7 @@ class Tree {
         return inorderArray;
     }
 
+    // returns a preorder array
     preorder(callback, root = this.root, preorderArray = []) {
         if (root === null) return;
 
@@ -148,6 +151,7 @@ class Tree {
         return preorderArray;
     }
 
+    // returns a postorder array
     postorder(callback, root = this.root, postorderArray = []) {
         if (root === null) return;
 
@@ -165,28 +169,38 @@ class Tree {
         return postorderArray;
     }
 
-    height(node, root = this.root, count = 1) {
-        if (root === null) return "Not found";
+    // returns the height of provided node in the tree
+    height(node, root = this.find(node)) {
+        if (root === null) return 0;
 
-        if (node === root.data) return 1;
+        let left = this.height(node, root.left);
+        let right = this.height(node, root.right);
+        return Math.max(left, right) + 1;
+    }
 
+    // returns the depth of the provided node in the tree
+    depth(node, root = this.root, depth = 0) {
+        if (root === null) return 0;
         if (node < root.data) {
-            count++
-            return root.left = this.height(node, root.left, count)
-        } else if (node > root.data) {
-            count++
-            return root.right = this.height(node, root.right, count)
+            return this.depth(node, root.left, depth + 1)
         }
-        console.log(count)
-        console.log(root)
+        if (node > root.data) {
+            return this.depth(node, root.right, depth + 1)
+        }
+        return depth
     }
 
-    depth() {
+    // checks to see if the tree is balanced. If difference between branches is greater than 1, then returns false. 
+    isBalanced(root = this.root) {
+        if (root === null) return false;
 
-    }
-
-    isBalanced() {
-
+        let left = this.height(root, root.left);
+        let right = this.height(root, root.right);
+        if (Math.abs(left - right) <= 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     rebalance() {
@@ -205,12 +219,12 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 }
 
-
 const binarySearchTree = new Tree(numberArray);
 // prettyPrint(binarySearchTree.root);
 binarySearchTree.insert(10);
 binarySearchTree.insert(50);
 binarySearchTree.insert(25);
+binarySearchTree.insert(30);
 binarySearchTree.delete(50);
 prettyPrint(binarySearchTree.root);
 // console.log(binarySearchTree.find(3))
@@ -218,4 +232,7 @@ binarySearchTree.levelOrder()
 console.log(binarySearchTree.inorder())
 console.log(binarySearchTree.preorder())
 console.log(binarySearchTree.postorder())
-binarySearchTree.height(2);
+console.log(binarySearchTree.height(3))
+console.log(binarySearchTree.depth(6))
+console.log(binarySearchTree.isBalanced())
+binarySearchTree.rebalance()
