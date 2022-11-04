@@ -1,0 +1,24 @@
+{
+  "name": "odin-binary-search-trees",
+  "version": "1.0.0",
+  "description": "A project for The Odin Project to implement a balanced binary search tree in Javascript.",
+  "main": "binary-search-trees.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bizarf/odin-binary-search-trees.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bizarf/odin-binary-search-trees/issues"
+  },
+  "homepage": "https://github.com/bizarf/odin-binary-search-trees#readme",
+  "type": "module",
+  "exports": {
+    "import": "./binary-search-trees.js"
+  }
+}
