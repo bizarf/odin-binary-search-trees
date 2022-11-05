@@ -226,26 +226,7 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 }
 
-// const binarySearchTree = new Tree(numberArray);
-// prettyPrint(binarySearchTree.root);
-// binarySearchTree.insert(10);
-// binarySearchTree.insert(50);
-// binarySearchTree.insert(25);
-// binarySearchTree.insert(30);
-// binarySearchTree.delete(50);
-// prettyPrint(binarySearchTree.root);
-// console.log(binarySearchTree.find(3))
-// binarySearchTree.levelOrder()
-// console.log(binarySearchTree.inorder())
-// console.log(binarySearchTree.preorder())
-// console.log(binarySearchTree.postorder())
-// console.log(binarySearchTree.height(3))
-// console.log(binarySearchTree.depth(6))
-// console.log(binarySearchTree.isBalanced())
-// binarySearchTree.rebalance()
-// prettyPrint(binarySearchTree.root);
-
 export {
-    Node,
-    Tree
+    Tree,
+    prettyPrint
 };
